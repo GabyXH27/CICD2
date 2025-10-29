@@ -19,7 +19,7 @@ jobs:
       with:
         python-version: "3.14"
     - name: Install dependencies
-      run: pip install -r src/requiements.txt
+      run: pip install -r requiements.txt
     - name: Test with pytest
       working-directory: src
       run: pytest tests.py
