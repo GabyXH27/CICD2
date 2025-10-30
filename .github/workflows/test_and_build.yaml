@@ -2,23 +2,24 @@ name: Test and Build
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]  # Cambiado de master a main
 
 jobs:
   test_and_build:
-
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-    - uses: actions/checkout@v4
-    
-    - name: Set up Python 3.14
+      uses: actions/checkout@v4
+
+    - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: "3.14"
+        python-version: "3.11"  # Usa una versión válida
+
     - name: Install dependencies
-      run: pip install -r requiements.txt
+      run: pip install -r requirements.txt  # Corregido el nombre
+
     - name: Test with pytest
-      working-directory: src
+      working-directory: ./src  # Asegúrate que src tiene tests.py
       run: pytest tests.py
